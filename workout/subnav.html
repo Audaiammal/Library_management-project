@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPKC Library Dashboard</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Navbar Custom Style */
+        .navbar-custom {
+            background-color: navy; /* Navy background */
+        }
+
+        .navbar-custom .navbar-brand, 
+        .navbar-custom .nav-link {
+            color: white; 
+        }
+
+        .navbar-custom .nav-link.active {
+            color:gold;
+        }
+
+        .card-custom {
+            /* border: 1px solid #ced4da; Light border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            background-color: navy; /* Navy background */
+            border: 2px dotted black; 
+        }
+
+        .card-header {
+            background-color:navy; /* Light grey background */
+            color: white;
+   }
+
+        /* Tab link colors */
+        .nav-tabs .nav-link.active {
+            background-color:grey; /* Active tab background */
+            color:black;
+        }
+
+        .nav-tabs .nav-link {
+            color: white; /* Inactive tab text color */
+        }
+        .nav-tabs .nav-link:hover {
+            background-color: grey;
+            color:white; 
+        }
+        .book{
+            border: 0.5px solid white;
+            background-color:navy;
+            color: white;
+            text-align: center;
+       
+        }
+
+    </style>
+    </head>
+<body>
+<div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">New Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Old Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Lost Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Damaged Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Subject for Replacement</a>
+                    </li>
+                </ul>
+            </div>
+                    <div class="float-end mt-3">
+                        <label>Records per page:</label>
+                        <select class="form-select d-inline-block w-auto">
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+</div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Include jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div class="float-end mt-3">
+    <label>Records per page:</label>
+    <select id="recordsPerPage" class="form-select d-inline-block w-auto">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+    </select>
+</div>
+
+<div id="records">
+    <!-- Records will be displayed here -->
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Fetch records initially
+        fetchRecords(10);
+
+        // Handle dropdown change
+        $('#recordsPerPage').change(function() {
+            var records_per_page = $(this).val();
+            fetchRecords(records_per_page);
+        });
+
+        // Function to fetch records
+        function fetchRecords(records_per_page) {
+            $.ajax({
+                type: "POST",
+                url: "your_php_file.php", // Change to the actual PHP file path
+                data: { records_per_page: records_per_page },
+                success: function(response) {
+                    $('#records').html(response);
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
