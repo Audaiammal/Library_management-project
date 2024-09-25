@@ -1,0 +1,36 @@
+* {
+    text-decoration: none;
+}
+
+.navbar {
+    background-color: navy;
+}
+
+.navicon {
+    display: flex !important;
+    
+}
+
+li a:hover {
+    color: aqua;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    justify-content: space-evenly !important;
+}
+
+li a {
+    color: antiquewhite;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none !important;
+    padding: 10px 0;
+}
